@@ -2,8 +2,10 @@ import { SidebarButton } from "@/components/ui/button"
 import { useLocation, useNavigate } from "react-router-dom"
 import logo from "@/assets/logo-brender-studio.svg"
 import { Separator } from "@/components/ui/separator"
-import React from "react"
+import React, { useEffect } from "react"
 import { bottomRoutes, topRoutes } from "@/routes/SidebarRoutes"
+import { getVersion } from '@tauri-apps/api/app';
+
 // import { useFormStore } from "@/store/useFormStore"
 
 interface SidebarProps {
@@ -12,6 +14,8 @@ interface SidebarProps {
 
 const Sidebar = ({ isCollapsed }: SidebarProps) => {
   // const { clearAllFormStates, setIsFolder } = useFormStore()
+  const [appVersion, setAppVersion] = React.useState<string>("0.0.0")
+
 
   const navigate = useNavigate()
   const currentPath = useLocation().pathname
@@ -20,12 +24,25 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
     navigate(path)
   }
 
+
+  const handleGetVersion = async () => {
+    const version = await getVersion()
+    console.log(version)
+    setAppVersion(version)
+  }
+
+  useEffect(() => {
+    handleGetVersion()
+  }, [])
+
   return (
     <div className="flex flex-col w-full">
       <div className="py-3">
         <div className={isCollapsed ? "px-2 flex items-center justify-center" : "flex items-center justify-between px-2 ml-[0.30rem]"}>
           <img src={logo} alt="Logo" className="h-6 min-w-6" />
-          <small className={isCollapsed ? "hidden" : "text-muted-foreground mr-2"}>v0.1.0</small>
+          <small className={isCollapsed ? "hidden" : "text-muted-foreground mr-2"}>
+            {appVersion ? `v${appVersion}` : "v0.0.0"}
+          </small>
         </div>
       </div>
       <div className="flex flex-col h-full justify-between">
