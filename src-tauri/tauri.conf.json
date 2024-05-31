@@ -7,7 +7,7 @@
   },
   "package": {
     "productName": "Dashboard Brender Studio",
-    "version": "0.6.0"
+    "version": "0.6.2"
   },
   "tauri": {
     "allowlist": {
@@ -37,8 +37,11 @@
         "all":true
       },
       "http": {
-        "all": false,
-        "request": true
+        "all": true,
+        "request": true,
+        "scope": [
+          "https://*"
+        ]
       },
       "notification": {
         "all": true
