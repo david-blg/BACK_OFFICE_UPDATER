@@ -7,7 +7,7 @@
   },
   "package": {
     "productName": "Dashboard Brender Studio",
-    "version": "0.3.0"
+    "version": "0.5.0"
   },
   "tauri": {
     "allowlist": {
@@ -75,7 +75,7 @@
       },
       "active": true,
       "endpoints": [
-        "https://zsbtkhsjz1.execute-api.us-east-1.amazonaws.com/prod/v2/updater-checker"
+        "https://zsbtkhsjz1.execute-api.us-east-1.amazonaws.com/prod/v2/updater-checker?current_version={{current_version}}&target={{target}}&arch={{arch}}"
       ],
       "dialog": true,
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDQ4RDMzQ0UxNzA0QTVFMjgKUldRb1hrcHc0VHpUU0l1TjJHdkQ0ZEJJWndWbm5mcTFwZXhkMS9TOEVUZnNsUU9IUTl2WkJXNUIK"
