@@ -1,5 +1,6 @@
+import Dashboard from "@/features/dashboard/Dashboard"
 import CostExplorerPage from "@/pages/CostExplorerPage"
-import DashboardPage from "@/pages/DashboardPage"
+// import DashboardPage from "@/pages/DashboardPage"
 import DownloadPage from "@/pages/DownloadPage"
 import MetricsPage from "@/pages/MetricsPage"
 // import NotFoundPage from "@/pages/NotFoundPage"
@@ -12,7 +13,7 @@ const AppRoutes = () => {
     return (
         <>
             <Routes>
-                <Route path="/" element={<DashboardPage />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="/downloads" element={<DownloadPage />} />
                 <Route path="/uploads" element={<UploadPage />} />
                 <Route path="/metrics" element={<MetricsPage />} />
