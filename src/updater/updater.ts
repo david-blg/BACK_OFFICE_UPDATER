@@ -1,7 +1,8 @@
 import { checkUpdate, installUpdate, onUpdaterEvent } from '@tauri-apps/api/updater';
-import { relaunch } from '@tauri-apps/api/process'
+import { relaunch } from '@tauri-apps/api/process';
 
 export const handleUpdates = async () => {
+    console.log('handleUpdates called');
     const unlisten = await onUpdaterEvent(({ error, status }) => {
         console.log('Updater event', error, status);
     });

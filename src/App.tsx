@@ -7,8 +7,17 @@ import { handleUpdates } from "./updater/updater";
 function App() {
 
   useEffect(() => {
-    handleUpdates();
+    console.log('useEffect is called');
+    const setupUpdates = async () => {
+      const unlisten = await handleUpdates();
+      // Cleanup function to unlisten to the updater events
+      return () => {
+        unlisten();
+      };
+    };
+    setupUpdates();
   }, []);
+
 
 
   return (
